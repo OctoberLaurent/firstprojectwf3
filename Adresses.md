@@ -100,8 +100,7 @@ class CopyrightExtentionExtension extends AbstractExtension
        }
         
         return html_entity_decode($copyright);
-        //dump($since);
-        //exit;
+    
     }
 }
 

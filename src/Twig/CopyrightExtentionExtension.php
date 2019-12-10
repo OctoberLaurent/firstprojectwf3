@@ -2,12 +2,20 @@
 
 namespace App\Twig;
 
-use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
+use Twig\Extension\AbstractExtension;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 class CopyrightExtentionExtension extends AbstractExtension
 {
+
+    private $params; 
+
+    public function __construct(ParameterBagInterface $params)
+    {
+        $this->params = $params;
+    }
     // public function getFilters(): array
     // {
     //     return [
@@ -25,9 +33,32 @@ class CopyrightExtentionExtension extends AbstractExtension
         ];
     }
 
-    public function doMyCopyright(?string $since = null)
+    // public function doMyCopyright(?string $since = null)
+    // {
+    //     $copyright = "&copy; ";
+    //     if ($since == null){
+
+    //         $since = date('Y');
+
+    //    }
+        
+    //    $copyright.= $since;
+
+    //    if ($since < date('Y')) {
+
+    //     $copyright .= "-".date('Y');
+    //    }
+        
+    //     return html_entity_decode($copyright);
+        
+    // }
+
+    public function doMyCopyright()
     {
+        $since = $this->params->get('copyrightSince');    
+       
         $copyright = "&copy; ";
+       
         if ($since == null){
 
             $since = date('Y');
@@ -42,7 +73,6 @@ class CopyrightExtentionExtension extends AbstractExtension
        }
         
         return html_entity_decode($copyright);
-        //dump($since);
-        //exit;
+
     }
 }
