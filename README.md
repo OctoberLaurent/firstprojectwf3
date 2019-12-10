@@ -23,7 +23,7 @@ php bin/console make:controller HomePage
 ````
 Une vue twig sera associée au contôlleur.
 
-> template>home_page>index.html.php
+template>home_page>index.html.php
 
 ----- 
 configuration de swiftMailler
@@ -82,3 +82,6 @@ Compiler le tout
 ```
 yarn encore dev
 ```
+
+
+
