@@ -10,7 +10,7 @@
 ### URL : Uniform Ressource Locator
     http://www.site.com/directory/path/file.html
 
-### URI : Uniform resource Identifier
+###  URI : Uniform resource Identifier
     http://www.site.com/directory/path/file.html?param=value
     http://www.site.com/directory/path/file.html#post
 
