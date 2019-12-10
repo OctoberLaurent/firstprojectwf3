@@ -17,8 +17,6 @@
 ### URN : Uniform resource Name
     www.site.com/directory/path/file.html#post
 
-
-
 *scheme*                  http, ftop, ssh, p2p, tel....
 *protocol*                http://
 
