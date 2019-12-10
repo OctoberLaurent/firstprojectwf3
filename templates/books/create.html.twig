@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block sidebar %} 
+<ul class = "flex-column">
+    <li>
+        <a class="nav-link" href="{{ url('home_page') }}">Accueil <span class="sr-only">(current)</span></a>
+    </li>
+    <li>
+        <a class="nav-link" href="{{ url('books:index') }}">Livres</a>    
+    </li>
+    <li><hr></hr>   
+    <li>
+        <a class="nav-link" href="{{ url('books:create') }}">Ajouter un livre</a>     
+    </li>
+</ul>
+{% endblock %}
+{% block content %} 
+<div class="example-wrapper">
+    <h1>{{ title }}</h1>
+</div>
+{% endblock %}
