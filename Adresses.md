@@ -191,7 +191,7 @@ php bin/console make:migration
 php bin/console doctrine:migrations:migrate
 ```
 
-Comment regenerer les getteurs et les setteurs ?
+Comment regenerer les getters et les setters ?
 
 ```
 php bin/console make:entity --regenerate App
@@ -203,3 +203,4 @@ php bin/console make:entity Books
 php bin/console make:migration 
 php bin/console doctrine:migrations:migrate
 ```
+
