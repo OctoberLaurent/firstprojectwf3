@@ -22,7 +22,7 @@ class CopyrightListener
 
     public function makeMyCopyright(ResponseEvent $event){
         
-        if(HttpKernelInterface::MASTER_REQUEST !== $event->getRequestType()){
+        if( HttpKernelInterface::MASTER_REQUEST !== $event->getRequestType() ){
 
             return;
 
@@ -45,8 +45,10 @@ class CopyrightListener
             $content
         );
 
+        // set content
         $response->setContent($content);
 
+        // set response
         $event->setResponse($response);
 
     }
