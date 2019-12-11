@@ -31,7 +31,7 @@ class UlListener
             $regexUl,
             $content,
             $matches);
-
+        
         // retieve str 
         $ul_tag = $matches[0] ?? null;
 
@@ -40,6 +40,7 @@ class UlListener
         
         $new_ul_tag = "";
         
+        // loop on tags
         foreach($li_tag as $key => $value){
 
             $new_ul_tag.= ($key ? "<li style = 'list-style:none;' >".$key.") " : null) .$value;

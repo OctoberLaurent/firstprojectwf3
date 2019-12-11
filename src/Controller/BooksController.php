@@ -15,13 +15,15 @@ class BooksController extends AbstractController
      */
     public function index()
     {
+        $books = ['Symfony pour les nuls', 
+        'PHP pourles nuls', 
+        'HTML pour les nuls',
+        'Java pour les nuls'];
+
+
         return $this->render('books/index.html.twig', [
             'title' => 'Détail des livres',
-            'books' => ['Symfony pour les nuls', 
-                        'PHP pourles nuls', 
-                        'HTML pour les nuls',
-                        'Java pour les nuls']
-        ]);
+            'books' => $books]);
     }
 
     /**
