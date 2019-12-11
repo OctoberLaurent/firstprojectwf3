@@ -173,4 +173,33 @@ a {5,10} -> recherge une chaine de 5 a à 10 a
 \D -> ! digit
 /([A-F0-9])/
 
+## Base de données
 
+Configuration du fichier .env
+```
+DATABASE_URL=mysql://root:@127.0.0.1:3306/books_store?serverVersion=5.7
+``` 
+Création de la base de donnée.
+```
+php bin/console doctrine:database:create
+```
+Création d'une entité
+
+```
+php bin/console make:entity Books
+php bin/console make:migration 
+php bin/console doctrine:migrations:migrate
+```
+
+Comment regenerer les getteurs et les setteurs ?
+
+```
+php bin/console make:entity --regenerate App
+```
+ajouter des éléments supplémentaires à la table..
+
+```
+php bin/console make:entity Books
+php bin/console make:migration 
+php bin/console doctrine:migrations:migrate
+```
