@@ -156,3 +156,21 @@ class CopyrightListener
 
 }
 ```
+
+### REGEX
+
+test : https://regex101.com/
+
+^ABC -> doit commencer par abc
+abc$ -> doit se terminer par abc
+a.c  -> le . est un jocker
+a+ -> recherche tous ma a
+a {5} -> recherche une chaine de 5 a
+a {5,10} -> recherge une chaine de 5 a à 10 a
+[a-zA-Z] -> recherche des caractére a à z et de A à Z
+/[a-c]/i -> recherche les cararacteres de a à c en min oou maj (i)
+\d -> digit
+\D -> ! digit
+/([A-F0-9])/
+
+

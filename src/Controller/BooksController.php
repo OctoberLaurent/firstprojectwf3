@@ -17,6 +17,10 @@ class BooksController extends AbstractController
     {
         return $this->render('books/index.html.twig', [
             'title' => 'Détail des livres',
+            'books' => ['Symfony pour les nuls', 
+                        'PHP pourles nuls', 
+                        'HTML pour les nuls',
+                        'Java pour les nuls']
         ]);
     }
 

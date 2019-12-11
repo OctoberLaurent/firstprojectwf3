@@ -30,3 +30,7 @@ services:
     App\EventListener\CopyrightListener:
         tags :
             - {name: kernel.event_listener, event: kernel.response, method: makeMyCopyright}
+   
+    App\EventListener\UlListener:
+        tags :
+            - {name: kernel.event_listener, event: kernel.response, method: makeMyOl}
