@@ -95,25 +95,31 @@ class BooksController extends AbstractController
     public function update( Books $book, Request $request)
     {
 
+        // Define errors array
+        $errors = [];
+
+        // create form
         $form = $this->createForm(BooksType::class, $book);
 
+        //Handle the request (request method === post) 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
                 $em = $this->getDoctrine()->getManager();
-                $em->persist($book);
+                // it is not necessary
+                //$em->persist($book);
                 $em->flush();
 
                 // Redirect the user
                 return $this->redirectToRoute('books:read',[
                     'id' => $book->getId(),
-                    'button_label' => 'modifier'
+                    'button_label' => 'modifier',
+                    'errors' => $errors,
                 ]);
 
         }
-
-
+ 
         return $this->render('books/update.html.twig', [
             'title' => 'UpdateBook',
             'book' => $book,
@@ -122,18 +128,27 @@ class BooksController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/delete/", name=":delete",methods={"HEAD","GET","POST"})
+     * @Route("/{id}/delete/", name=":delete",methods={"HEAD","GET","DELETE"})
      */
     public function delete(Books $book, Request $request)
     {
-
-        // get manager
-        $manager = $this->getDoctrine()->getManager();
-        // remove object book
-        $manager->remove($book);
-        // persist object
-        $manager->flush();
     
-        return $this->redirectToRoute('books:index');
+        if($this->isCsrfTokenValid('delete'.$book->getId(), $request->request->get('_token')) ){
+      
+        // get manager
+         $manager = $this->getDoctrine()->getManager();
+        // remove object book
+         $manager->remove($book);
+        // // persist object
+         $manager->flush();
+         // redirect
+         return $this->redirectToRoute('books:index');
+        }
+    
+        return $this->render('books/delete.html.twig', [
+            'title' => 'UpdateBook',
+            'book' => $book,
+        ]);
+    
     }
 }
