@@ -28,7 +28,7 @@ class BooksController extends AbstractController
     }
 
     /**
-     * @Route("/create", name=":create",methods={"HEAD","GET","POST"})
+     * @Route("/security/create", name=":create",methods={"HEAD","GET","POST"})
      */
     public function create(Request $request)
     {
@@ -90,7 +90,7 @@ class BooksController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/update", name=":update",methods={"HEAD","GET","POST"})
+     * @Route("/security/{id}/update", name=":update",methods={"HEAD","GET","POST"})
      */
     public function update( Books $book, Request $request)
     {
@@ -128,7 +128,7 @@ class BooksController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/delete/", name=":delete",methods={"HEAD","GET","DELETE"})
+     * @Route("/security/{id}/delete/", name=":delete",methods={"HEAD","GET","DELETE"})
      */
     public function delete(Books $book, Request $request)
     {

@@ -2,21 +2,8 @@
 
 {% block title %}{{title}}{% endblock %}
 
-{% block body %}
-{% endblock %}
-{% block sidebar %}
-    <ul class="nav flex-column">
-    <li class="nav-link">
-        <a class="nav-link" href="{{ url('home_page') }}">Accueil <span class="sr-only">(current)</span></a>
-    </li>
-    <li class="nav-link">
-        <a class="nav-link" href="{{ url('books:index') }}">Livres</a>    
-    </li>
-    <li class="nav-link">
-        <a class="nav-link" href="{{ url('books:create') }}">Ajouter un livre</a>     
-    </li>
-    </ul>
-{% endblock %}
+{% block body %}{% endblock %}
+{% block sidebar %}{% endblock %}
 {% block content %} 
 <div class="example-wrapper">
     <h1>{{title}}</h1>
@@ -27,8 +14,10 @@
             <th scope="col">Titre</th>
             <th scope="col">Description</th>
             <th scope="col">Price</th>
-            <th scope="col">Edit</th>
-            <th scope="col">Delete</th>
+            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+            {% endif %}
             </tr>
         </thead>
         <tbody>
@@ -38,8 +27,10 @@
             <td>{{ book.title }}</td>
             <td>{{ book.description }}</td>
             <td>{{ book.price }}</td>
-            <td> <div class = "text-center"><a  class = "text-center" href="{{ path ('books:update', { 'id' : book.id }) }}"><i class="far fa-edit"></i></a></div></td>
-            <td> <div class = "text-center"><a class = "text-center"><a href="{{ path ('books:delete', { 'id' : book.id }) }}"><i class="fas fa-trash-alt"></i></a></div></td>
+            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                <td> <div class = "text-center"><a  class = "text-center" href="{{ path ('books:update', { 'id' : book.id }) }}"><i class="far fa-edit"></i></a></div></td>
+                <td> <div class = "text-center"><a class = "text-center"><a href="{{ path ('books:delete', { 'id' : book.id }) }}"><i class="fas fa-trash-alt"></i></a></div></td>
+            {% endif %}
             </tr>
         {% endfor %}
         </tbody>

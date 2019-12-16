@@ -9,6 +9,7 @@ use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotNull;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
@@ -17,7 +18,10 @@ class RegisterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email')
+            ->add('firstName')
+            ->add('lastName')
+            ->add('birthday')
+            ->add('email', EmailType::class)
             /* Mot de passe */
             ->add('password', RepeatedType::class, [
                 'label' => false,
@@ -47,10 +51,7 @@ class RegisterType extends AbstractType
                     ],
                 ],
                 'invalid_message' => "Les mots de passe doivent etre identiques.",
-            ])
-            ->add('firstName')
-            ->add('lastName')
-            ->add('birthday');
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

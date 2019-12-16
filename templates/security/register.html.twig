@@ -2,7 +2,8 @@
 
 {% block title %}Symfony Users{% endblock %}
 
-{% block body %}
+{% block content %}
+<div class="container">
     <h1>Register</h1>
 
     {{ form_start(form, {'attr': {"novalidate": "novalidate"}}) }}
@@ -49,7 +50,11 @@
         {{ form_errors(form.agreeTerms) }}
         {{ form_help(form.agreeTerms) }}
     </div> #}
-    
+    <div class="text-right mr-5">
+        <button type = "submit" class="btn btn-xs btn-success">{{ button_label | default('ajouter un livre') }}</button>
+    </div>
+</div>
+
 
     {{ form_end(form) }}
 
